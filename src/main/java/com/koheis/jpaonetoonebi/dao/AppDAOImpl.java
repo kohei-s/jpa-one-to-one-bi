@@ -1,6 +1,7 @@
 package com.koheis.jpaonetoonebi.dao;
 
 import com.koheis.jpaonetoonebi.entity.Instructor;
+import com.koheis.jpaonetoonebi.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,4 +41,11 @@ public class AppDAOImpl implements AppDAO{
         // delete the instructor
         entityManager.remove(tempInstructor);
     }
+
+    @Override
+    public InstructorDetail findInstructorDetailById(int theId) {
+
+        return entityManager.find(InstructorDetail.class, theId);
+    }
+
 }

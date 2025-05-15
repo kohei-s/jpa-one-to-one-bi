@@ -21,13 +21,22 @@ public class JpaOneToOneBiApplication {
         return runner -> {
             // createInstructor(appDAO);
             // findInstructor(appDAO);
+            // deleteInstructor(appDAO);
 
-            deleteInstructor(appDAO);
+            findInstructorDetail(appDAO);
         };
     }
 
-    private void deleteInstructor(AppDAO appDAO) {
+    private void findInstructorDetail(AppDAO appDAO) {
+        int theId = 2;
+        System.out.println("Finding instructorDeatil id: " + theId);
+        InstructorDetail tempInstructorDetail = appDAO.findInstructorDetailById(theId);
+        System.out.println("tempInstructordetail: " + tempInstructorDetail);
+        System.out.println("the associated instructor: " + tempInstructorDetail.getInstructor());
+        System.out.println("Done!");
+    }
 
+    private void deleteInstructor(AppDAO appDAO) {
         int theId = 1;
         System.out.println("Deleting instructor id: " + theId);
         appDAO.deleteInstructorById(theId);
@@ -40,7 +49,7 @@ public class JpaOneToOneBiApplication {
         System.out.println("Finding instructor id: " + theId);
         Instructor tempInstructor = appDAO.findInstructorById(theId);
         System.out.println("tempInstructor: " + tempInstructor);
-        System.out.println("the associate instructorDetail only: " + tempInstructor.getInstructorDetail());
+        System.out.println("the associated instructorDetail only: " + tempInstructor.getInstructorDetail());
     }
 
     private void createInstructor(AppDAO appDAO) {
